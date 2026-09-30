@@ -234,7 +234,7 @@ class RiverbankMonitor:
                 DEFAULT_PERSON_CLASSES
             )
 
-     
+# part 2 screen 1     
 
     def update(
         self,
@@ -342,9 +342,7 @@ class RiverbankMonitor:
 
         return events
 
-    # ================================================================
-    # ZONE
-    # ================================================================
+    # part 4 screen 3
 
     def level_of(
         self,
@@ -368,12 +366,7 @@ class RiverbankMonitor:
 
         return None
 
-    # ================================================================
-    # SPEED
-    # ================================================================
-    # 
-    # 
-    # 
+    # part 5 screen 4
              
     def _speed_and_center(
         self,
@@ -406,9 +399,7 @@ class RiverbankMonitor:
 
         return speed, center
 
-    # ================================================================
-    # LOITER
-    # ================================================================
+    # part 6 screen 5
 
     def _accumulate_loiter(
         self,
@@ -471,9 +462,7 @@ class RiverbankMonitor:
 
         return loiter[track_id], True
 
-    # ================================================================
-    # PRESENT TRACKS
-    # ================================================================
+    # part 7 screen 6
 
     def _tick_present(
         self,
@@ -508,9 +497,7 @@ class RiverbankMonitor:
                 dt,
             )
 
-            # --------------------------------------------------------
-            # Zone timers
-            # --------------------------------------------------------
+    # part 8 screen 7
 
             if in_danger:
 
@@ -532,9 +519,7 @@ class RiverbankMonitor:
                 if track_id not in self._near_since:
                     self._near_since[track_id] = now
 
-            # --------------------------------------------------------
-            # NEAR loiter
-            # --------------------------------------------------------
+    # part 9 screen 8
 
             near_loiter = 0.0
             near_playing = False
@@ -564,9 +549,7 @@ class RiverbankMonitor:
                     None,
                 )
 
-            # --------------------------------------------------------
-            # DANGER loiter
-            # --------------------------------------------------------
+    # part 10 screen 9
 
             danger_loiter = 0.0
             danger_playing = False
@@ -596,9 +579,7 @@ class RiverbankMonitor:
                     None,
                 )
 
-            # --------------------------------------------------------
-            # Remaining time
-            # --------------------------------------------------------
+    # part 11 screen 10            
 
             remain_near = max(
                 0.0,
@@ -610,9 +591,7 @@ class RiverbankMonitor:
                 self.danger_s - danger_loiter,
             )
 
-            # --------------------------------------------------------
-            # NEAR alert
-            # --------------------------------------------------------
+    # part 12 screen 11
 
             if (
                 in_near
@@ -634,9 +613,7 @@ class RiverbankMonitor:
                     )
                 )
 
-            # --------------------------------------------------------
-            # DANGER alert
-            # --------------------------------------------------------
+    # part 13 screen 12
 
             if (
                 in_danger
@@ -674,9 +651,7 @@ class RiverbankMonitor:
                     )
                 )
 
-            # --------------------------------------------------------
-            # UI
-            # --------------------------------------------------------
+    # part 14 screen 13
 
             if in_danger:
 
@@ -736,9 +711,7 @@ class RiverbankMonitor:
 
         return events
 
-    # ================================================================
-    # MISSING DANGER
-    # ================================================================
+    # part 15 screen 14
 
     def _tick_missing_danger(
         self,
@@ -833,9 +806,7 @@ class RiverbankMonitor:
 
         return events
 
-    # ================================================================
-    # MISSING NEAR
-    # ================================================================
+    # part 16 screen 15
 
     def _tick_missing_near(
         self,
@@ -925,9 +896,8 @@ class RiverbankMonitor:
 
         return events
 
-    # ================================================================
-    # CLEANUP
-    # ================================================================
+    # part 16 screen 15
+    
 
     def _drop_near(
         self,
@@ -974,9 +944,7 @@ class RiverbankMonitor:
             None,
         )
 
-    # ================================================================
-    # EVENTS
-    # ================================================================
+    # part 17 screen 16
 
     def _leave(
         self,
@@ -1022,9 +990,7 @@ class RiverbankMonitor:
             bbox=track.bbox,
         )
 
-    # ================================================================
-    # PROPERTIES
-    # ================================================================
+    # part 18 screen 17
 
     @property
     def near_ids(self) -> set[int]:
@@ -1056,9 +1022,7 @@ class RiverbankMonitor:
 
 
 
-# ================================================================
-    # STATUS
-    # ================================================================
+# part 19 screen 18
 
     def status(
         self,
@@ -1098,9 +1062,7 @@ class RiverbankMonitor:
             0,
         )
 
-    # ================================================================
-    # DRAW
-    # ================================================================
+    # part 20 screen 19
 
     def draw(
         self,
@@ -1175,6 +1137,8 @@ class RiverbankMonitor:
 
         return vis
 
+    # part 21 screen 20    
+
     def draw_hud(
         self,
         frame: np.ndarray,
@@ -1244,7 +1208,7 @@ class RiverbankMonitor:
         )
 
 
-
+    # part 22 screen 21
 
 
 def draw_status_hud(
@@ -1454,6 +1418,8 @@ def draw_status_hud(
     return vis
 
 
+    # part 23 screen 22
+
 def _draw_level_polygon(
     frame: np.ndarray,
     polygon: list[tuple[int, int]],
@@ -1503,7 +1469,8 @@ def _draw_level_polygon(
         thickness=draw_thickness,
     )
 
-
+    
+    # part 24 screen 23
 
 def _anchor_xy(
     bbox: tuple[float, float, float, float],
@@ -1527,7 +1494,9 @@ def _anchor_xy(
         (y1 + y2) / 2.0,
     )
 
-
+    
+    # part 25 screen 24
+    
 def _draw_anchor_label(
     frame: np.ndarray,
     xy: tuple[float, float],
@@ -1592,6 +1561,9 @@ def _draw_anchor_label(
         thick,
         cv2.LINE_AA,
     )
+
+
+    # last part 26 screen 25
 
 if __name__ == "__main__":
     logging.basicConfig(
